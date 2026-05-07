@@ -19,7 +19,7 @@ export function Header({ children }: HeaderProps) {
           </div>
         </div>
         
-        <div className="text-brand-orange font-bold text-sm sm:text-base border-l-2 border-white/20 pl-4 hidden sm:block">
+        <div className="font-bold text-sm sm:text-base sm:border-l-2 sm:border-white/20 sm:pl-4 mt-2 sm:mt-0 drop-shadow-[0_0_10px_rgba(56,189,248,0.7)] bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-300 bg-clip-text text-transparent animate-pulse">
           A.G Patil Institute Of Technology, Solapur
         </div>
         
