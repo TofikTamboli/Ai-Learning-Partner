@@ -410,12 +410,16 @@ app.post('/api/suggestions', async (req, res) => {
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 
-app.listen(PORT, () => {
-  const gemini = process.env.GEMINI_API_KEY ? '✅' : '❌';
-  const mistral = process.env.MISTRAL_API_KEY ? '✅' : '❌';
-  const tavily = process.env.TAVILY_API_KEY ? '✅' : '❌';
-  console.log(`\n🚀 API Server running on http://localhost:${PORT}`);
-  console.log(`   Gemini:  ${gemini} ${process.env.GEMINI_API_KEY ? 'configured' : 'missing'}`);
-  console.log(`   Mistral: ${mistral} ${process.env.MISTRAL_API_KEY ? 'configured' : 'missing'}`);
-  console.log(`   Tavily:  ${tavily} ${process.env.TAVILY_API_KEY ? 'configured' : 'missing'}\n`);
-});
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    const gemini = process.env.GEMINI_API_KEY ? '✅' : '❌';
+    const mistral = process.env.MISTRAL_API_KEY ? '✅' : '❌';
+    const tavily = process.env.TAVILY_API_KEY ? '✅' : '❌';
+    console.log(`\n🚀 API Server running on http://localhost:${PORT}`);
+    console.log(`   Gemini:  ${gemini} ${process.env.GEMINI_API_KEY ? 'configured' : 'missing'}`);
+    console.log(`   Mistral: ${mistral} ${process.env.MISTRAL_API_KEY ? 'configured' : 'missing'}`);
+    console.log(`   Tavily:  ${tavily} ${process.env.TAVILY_API_KEY ? 'configured' : 'missing'}\n`);
+  });
+}
+
+export default app;
